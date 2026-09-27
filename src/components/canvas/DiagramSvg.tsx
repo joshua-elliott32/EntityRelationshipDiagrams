@@ -493,7 +493,7 @@ const RelLabel = memo(function RelLabel(p: RelProps & { width: number }) {
   const { rel: r, route, pal, state, width } = p;
   const { x, y } = route.labelAt;
   const text = pillText(r);
-  const unlabelled = !r.label.trim();
+  if (!text) return null;
   const sel = state === 2;
   return (
     <g data-rel={r.id} className={p.interactive ? styles.rel : undefined}>
@@ -505,7 +505,7 @@ const RelLabel = memo(function RelLabel(p: RelProps & { width: number }) {
         rx={PILL_H / 2}
         style={{
           fill: sel ? pal.accent : pal.card,
-          stroke: state ? pal.accent : unlabelled ? pal.rule : pal.line,
+          stroke: state ? pal.accent : pal.line,
           strokeWidth: 1,
         }}
       />
@@ -514,7 +514,7 @@ const RelLabel = memo(function RelLabel(p: RelProps & { width: number }) {
         y={y + 3.6}
         textAnchor="middle"
         style={{
-          fill: sel ? pal.accentInk : state ? pal.accent : unlabelled ? pal.soft : pal.ink,
+          fill: sel ? pal.accentInk : state ? pal.accent : pal.ink,
           fontFamily: pal.mono,
           fontSize: 10.5,
           fontWeight: 600,

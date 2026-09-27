@@ -73,7 +73,10 @@ export function computeLayout(
   }
   const freshRoutes = routeRelationships(d, boxes, {
     style: opts.lineStyle,
-    labelSize: (r) => ({ w: pillWidth(r, measure), h: PILL_H + 2 }),
+    labelSize: (r) => {
+      const w = pillWidth(r, measure);
+      return w ? { w, h: PILL_H + 2 } : { w: 0, h: 0 };
+    },
   });
   const routes = new Map<string, Route>();
   for (const r of rels) {
@@ -106,6 +109,7 @@ export function contentBounds(
     const rt = layout.routes.get(r.id);
     if (!rt) continue;
     const hw = pillWidth(r, measure) / 2;
+    if (!hw) continue;
     x1 = Math.min(x1, rt.labelAt.x - hw);
     x2 = Math.max(x2, rt.labelAt.x + hw);
     y1 = Math.min(y1, rt.labelAt.y - PILL_H / 2);
