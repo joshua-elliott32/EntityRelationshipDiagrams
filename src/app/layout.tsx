@@ -1,7 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Instrument_Sans, JetBrains_Mono } from "next/font/google";
 import type { ReactNode } from "react";
-import { PrivateSpeedInsights } from "@/components/PrivateSpeedInsights";
+import { PrivateTelemetry } from "@/components/PrivateTelemetry";
 import { SITE_DESCRIPTION, SITE_NAME, SITE_TAGLINE, SITE_URL } from "@/lib/site";
 import "./globals.css";
 
@@ -62,7 +62,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
       </head>
       <body>
         {children}
-        <PrivateSpeedInsights />
+        <PrivateTelemetry />
       </body>
     </html>
   );

@@ -71,11 +71,12 @@ export function MoreMenu() {
             whole diagram inside the link itself — nothing is uploaded.
           </p>
           <p>
-            <strong>Performance measurements.</strong> This site uses Vercel Speed Insights to
-            measure how quickly pages load and respond. It sends anonymous timings (Core Web
-            Vitals), the page address without anything after <code>?</code> or <code>#</code>, and
-            your browser and device type. It uses no cookies and never includes your diagrams or
-            share links.
+            <strong>Visit and speed statistics.</strong> This site uses Vercel Web Analytics to
+            count page visits and Vercel Speed Insights to measure how quickly pages load. They
+            record the page address with anything after <code>?</code> or <code>#</code> removed,
+            the site you came from, your browser, operating system and device type, your approximate
+            country, and page-load timings. They use no cookies, keep no IP addresses and never
+            include your diagrams or share links.
           </p>
           <p style={{ marginBottom: 0, color: "var(--ink-soft)", fontSize: 13 }}>
             Clearing your browser data removes the saved diagram, so export a diagram file (.json)
