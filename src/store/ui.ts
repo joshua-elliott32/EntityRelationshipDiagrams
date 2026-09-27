@@ -19,6 +19,8 @@ interface UiStore {
   toast: Toast | null;
   /** Hovered relationship or table, for highlighting connected lines. */
   hover: Selection;
+  /** Ask the canvas to scroll a table or relationship into view (seq changes each request). */
+  reveal: { target: Exclude<Selection, null>; seq: number } | null;
 
   select(sel: Selection): void;
   setTab(tab: PanelTab): void;
@@ -28,6 +30,8 @@ interface UiStore {
   closeDialog(): void;
   showToast(message: string): void;
   setHover(h: Selection): void;
+  /** Select and scroll into view. */
+  revealOnCanvas(target: Exclude<Selection, null>): void;
 }
 
 let toastSeq = 0;
@@ -39,6 +43,7 @@ export const useUiStore = create<UiStore>()((set) => ({
   dialog: null,
   toast: null,
   hover: null,
+  reveal: null,
 
   select: (selection) => set(selection ? { selection, tab: "edit" } : { selection }),
   setTab: (tab) => set({ tab }),
@@ -48,4 +53,10 @@ export const useUiStore = create<UiStore>()((set) => ({
   closeDialog: () => set({ dialog: null }),
   showToast: (message) => set({ toast: { id: ++toastSeq, message } }),
   setHover: (hover) => set({ hover }),
+  revealOnCanvas: (target) =>
+    set((s) => ({
+      selection: target,
+      tab: "edit",
+      reveal: { target, seq: (s.reveal?.seq ?? 0) + 1 },
+    })),
 }));
