@@ -1,36 +1,76 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# ERD Studio
 
-## Getting Started
+Sketch database tables, mark primary and foreign keys, connect them with
+crow's-foot relationships and check the design against 1NF → BCNF — entirely
+in your browser. Nothing is uploaded: diagrams live in `localStorage`, in files
+you export, or inside share links.
 
-First, run the development server:
+Grown from the single-file prototype kept in [`docs/original-demo.html`](docs/original-demo.html).
+
+## Features
+
+- **Tables and columns** — types, primary keys (including composite), unique,
+  nullable, "holds a list", defaults and notes; header colours.
+- **Foreign keys** — tick _Foreign key_ on a column and pick what it references,
+  drag between tables in link mode, or let linking create the `<parent>_id`
+  column for you.
+- **Relationships** — 1:1, 1:N, N:M with optionality (crow's foot or `1`/`N`
+  notation), ON DELETE / ON UPDATE actions, one-click junction tables.
+- **Routed lines** — orthogonal lines that attach to the key rows and avoid
+  other tables (curved and straight styles too).
+- **Normalisation checker** — choose a target (1NF, 2NF, 3NF, BCNF) and get
+  specific, fixable issues, plus key/relationship and naming checks.
+- **Import** — diagram JSON, or `CREATE TABLE` scripts from PostgreSQL, MySQL,
+  SQLite and SQL Server.
+- **Export** — PNG, SVG, Excel workbook, SQL DDL (4 dialects), Mermaid, DBML,
+  JSON, and share links that carry the whole diagram.
+- Undo/redo, auto-layout, keyboard shortcuts, light and dark themes.
+
+## Getting started
+
+Requires Node.js 20.9+ (22 recommended — see `.nvmrc`).
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm ci
+npm run dev        # http://localhost:3000
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+| Script                  | What it does                                                      |
+| ----------------------- | ----------------------------------------------------------------- |
+| `npm run dev`           | Development server                                                |
+| `npm run build`         | Static export to `out/`                                           |
+| `npm start`             | Serve `out/` locally                                              |
+| `npm run check`         | Typecheck, lint, format check and unit tests (run before pushing) |
+| `npm run test:e2e`      | Playwright tests against the built site (`npm run build` first)   |
+| `npm run test:coverage` | Unit tests with coverage                                          |
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Project layout
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```
+src/
+  app/                 Next.js entry (layout, global CSS tokens, page)
+  components/          React UI — canvas/, panel/, toolbar/, dialogs/, ui/
+  hooks/               useAnalysis, useLayout, keyboard shortcuts, theme
+  lib/                 Pure TypeScript, unit tested, no React
+    model/             Diagram types, factories, queries, import validation
+    analysis/          Normalisation and design checks
+    geometry/          Table sizing, line routing, markers, auto-layout
+    io/                SQL/Mermaid/DBML/XLSX/JSON import-export, share links
+    export/            SVG and PNG rendering
+    settings/          Settings types and defaults
+  store/               Zustand stores: diagram (with undo), ui, settings
+e2e/                   Playwright smoke tests
+docs/                  Deployment checklist, roadmap, original prototype
+```
 
-## Learn More
+The app is a static export (`output: "export"`): there is no server code, so
+every feature runs client-side and the site can be hosted anywhere.
 
-To learn more about Next.js, take a look at the following resources:
+## Deployment
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+See [docs/DEPLOYMENT.md](docs/DEPLOYMENT.md) for the Vercel setup and the
+pre-launch checklist.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Contributing
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+See [CONTRIBUTING.md](CONTRIBUTING.md).

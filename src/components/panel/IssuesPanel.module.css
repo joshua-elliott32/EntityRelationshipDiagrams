@@ -1,0 +1,157 @@
+.head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px 12px;
+  margin-bottom: 16px;
+}
+
+.summary {
+  margin: 0;
+  font-size: 14px;
+}
+
+.good {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.muted {
+  color: var(--ink-soft);
+  font-weight: 400;
+}
+
+.target {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  color: var(--ink-soft);
+}
+
+.target select {
+  min-height: 28px;
+  padding: 0 4px;
+  border: 1px solid var(--rule);
+  border-radius: var(--radius);
+  background: var(--card);
+  color: var(--ink);
+  font-size: 12.5px;
+  cursor: pointer;
+}
+
+.toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.toolbar fieldset {
+  margin: 0;
+}
+
+.count {
+  margin: 0;
+  font-weight: 600;
+}
+
+.group + .group {
+  margin-top: 16px;
+}
+
+.groupTitle {
+  margin: 8px 0;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--ink-soft);
+}
+
+.issues {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.issues li + li {
+  margin-top: 8px;
+}
+
+.issue {
+  display: block;
+  width: 100%;
+  padding: 8px 12px;
+  border: 1px solid var(--rule);
+  border-left: 4px solid var(--hl);
+  border-radius: var(--radius);
+  background: var(--card);
+  text-align: left;
+  cursor: pointer;
+  transition: border-color 0.12s;
+}
+
+.issue:hover {
+  border-color: var(--ink-soft);
+  border-left-color: var(--hl);
+}
+
+.warning,
+.warning:hover {
+  border-left-style: dashed;
+}
+
+.info,
+.info:hover {
+  border-left-color: var(--accent);
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px 8px;
+  margin-bottom: 4px;
+}
+
+.chip {
+  padding: 1px 6px;
+  border-radius: 3px;
+  background: var(--ink);
+  color: var(--card);
+  font-family: var(--mono);
+  font-size: 10.5px;
+  font-weight: 700;
+}
+
+.maybe {
+  padding: 0 6px;
+  border: 1px dashed var(--ink-soft);
+  border-radius: 3px;
+  color: var(--ink-soft);
+  font-size: 10.5px;
+  font-weight: 500;
+}
+
+.where {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--ink-soft);
+}
+
+.issue strong {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.fix {
+  display: block;
+  margin-top: 4px;
+  font-size: 12px;
+  color: var(--ink-soft);
+}

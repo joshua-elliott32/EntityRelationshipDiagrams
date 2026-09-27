@@ -1,0 +1,168 @@
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-bottom: 12px;
+  min-width: 0;
+}
+
+.inline {
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+}
+
+.inline .label {
+  white-space: nowrap;
+}
+
+.label {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--ink-soft);
+}
+
+.hint {
+  font-size: 12px;
+  color: var(--ink-soft);
+  line-height: 1.4;
+}
+
+.input {
+  width: 100%;
+  min-width: 0;
+  min-height: 32px;
+  padding: 4px 8px;
+  border: 1px solid var(--rule);
+  border-radius: var(--radius);
+  background: var(--card);
+  font-size: 13px;
+  transition: border-color 0.12s;
+}
+
+.input:hover:not(:disabled):not(:focus) {
+  border-color: var(--ink-faint);
+}
+
+.input:focus {
+  border-color: var(--accent);
+  outline: none;
+  box-shadow: 0 0 0 3px var(--accent-soft);
+}
+
+.input:disabled {
+  opacity: 0.55;
+}
+
+.input::placeholder {
+  color: var(--ink-faint);
+}
+
+.select {
+  padding-right: 4px;
+  cursor: pointer;
+}
+
+.textarea {
+  min-height: 64px;
+  padding: 8px;
+  line-height: 1.45;
+  resize: vertical;
+}
+
+.check {
+  display: inline-flex;
+  align-items: flex-start;
+  gap: 8px;
+  min-height: 28px;
+  padding: 4px 0;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.check input {
+  flex: none;
+  width: 16px;
+  height: 16px;
+  margin: 1px 0 0;
+  accent-color: var(--accent);
+  cursor: pointer;
+}
+
+.checkText {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.segField {
+  margin: 0 0 12px;
+  padding: 0;
+  border: 0;
+  min-width: 0;
+}
+
+.segField > legend {
+  padding: 0;
+  margin-bottom: 4px;
+}
+
+.seg {
+  display: inline-flex;
+  flex-wrap: wrap;
+  padding: 2px;
+  gap: 2px;
+  border: 1px solid var(--rule);
+  border-radius: var(--radius);
+  background: var(--panel);
+}
+
+.segItem {
+  position: relative;
+  display: inline-flex;
+}
+
+.segItem input {
+  position: absolute;
+  opacity: 0;
+  inset: 0;
+  margin: 0;
+  cursor: pointer;
+}
+
+.segItem span {
+  display: inline-flex;
+  align-items: center;
+  min-height: 28px;
+  padding: 0 12px;
+  border-radius: 4px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--ink-soft);
+  white-space: nowrap;
+  cursor: pointer;
+  transition:
+    background-color 0.12s,
+    color 0.12s;
+}
+
+.segItem:hover span {
+  color: var(--ink);
+}
+
+.segItem input:checked + span {
+  background: var(--card);
+  color: var(--ink);
+  box-shadow: 0 0 0 1px var(--rule);
+}
+
+.segItem input:focus-visible + span {
+  outline: 2px solid var(--accent);
+  outline-offset: 1px;
+}
+
+.segSmall .segItem span {
+  min-height: 24px;
+  padding: 0 8px;
+  font-size: 12px;
+}
