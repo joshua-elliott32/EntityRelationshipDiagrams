@@ -5,6 +5,9 @@ export const SITE_URL = "https://entity-relationship-diagrams.vercel.app";
 
 export const SITE_NAME = "ERD Studio";
 
+/** Public source repository (MIT licensed). */
+export const SOURCE_URL = "https://github.com/joshua-elliott32/EntityRelationshipDiagrams";
+
 export const SITE_TAGLINE = "Entity relationship diagrams in your browser";
 
 export const SITE_DESCRIPTION =
