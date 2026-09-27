@@ -121,3 +121,22 @@ test("a share link opens the diagram in a fresh browser", async ({ page, browser
 function escape(s: string): string {
   return s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 }
+
+test("opening a share link keeps your own diagram one Undo away", async ({ page, browser }) => {
+  await page.getByRole("textbox", { name: "Diagram name" }).fill("Their diagram");
+  await page.getByRole("button", { name: "Share" }).click();
+  const url = await page.getByRole("textbox", { name: "Share link" }).inputValue();
+
+  // Someone else's browser, with their own work already saved.
+  const other = await browser.newContext();
+  const p2 = await other.newPage();
+  await p2.goto("/");
+  await p2.getByRole("textbox", { name: "Diagram name" }).fill("My own work");
+  await p2.waitForTimeout(600); // let autosave run
+
+  await p2.goto(url);
+  await expect(p2.getByRole("textbox", { name: "Diagram name" })).toHaveValue("Their diagram");
+  await p2.getByRole("button", { name: "Undo" }).last().click();
+  await expect(p2.getByRole("textbox", { name: "Diagram name" })).toHaveValue("My own work");
+  await other.close();
+});
