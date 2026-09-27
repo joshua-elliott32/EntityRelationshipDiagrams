@@ -1,0 +1,84 @@
+{
+  "name": "Scorecards",
+  "tables": [
+    {
+      "name": "Employees",
+      "color": "green",
+      "at": [127, 124],
+      "size": [290, 92],
+      "columns": ["EmployeeID INT PK"]
+    },
+    {
+      "name": "ScorecardAreas",
+      "color": "teal",
+      "at": [111, 258],
+      "size": [342, 170],
+      "columns": ["ScorecardAreaID INT PK", "Name VARCHAR(100)", "AreaLeader INT FK"]
+    },
+    {
+      "name": "Scorecards",
+      "color": "teal",
+      "at": [567, 180],
+      "size": [342, 208],
+      "columns": [
+        "ScorecardID INT PK",
+        "Name VARCHAR(100)",
+        "ScorecardAreaID INT? FK",
+        "ScorecardTypeID INT FK"
+      ]
+    },
+    {
+      "name": "ScorecardType",
+      "color": "teal",
+      "at": [1005, 297],
+      "size": [342, 131],
+      "columns": ["ScorecardTypeID INT PK", "Name VARCHAR(100)"]
+    },
+    {
+      "name": "ScorecardMetrics",
+      "color": "violet",
+      "at": [1508, 258],
+      "size": [381, 364],
+      "columns": [
+        "ScorecardMetricID INT PK",
+        "ScorecardTypeID INT FK",
+        "MetricType VARCHAR(100)",
+        "Frequency VARCHAR(100)",
+        "Name VARCHAR(100)",
+        "MinValue VARCHAR(100)",
+        "MaxValue VARCHAR(100)",
+        "UoM VARCHAR(100)"
+      ]
+    },
+    {
+      "name": "MetricInstances",
+      "color": "violet",
+      "at": [1515, 649],
+      "size": [368, 170],
+      "columns": ["MetricInstanceID INT PK", "ScorecardMetricID INT FK", "Period VARCHAR(100)"]
+    }
+  ],
+  "relationships": [
+    { "from": "Employees.EmployeeID", "to": "ScorecardAreas.AreaLeader", "ends": "||--o{" },
+    {
+      "from": "ScorecardAreas.ScorecardAreaID",
+      "to": "Scorecards.ScorecardAreaID",
+      "ends": "|o--o|"
+    },
+    {
+      "from": "ScorecardType.ScorecardTypeID",
+      "to": "Scorecards.ScorecardTypeID",
+      "ends": "||--o{"
+    },
+    {
+      "from": "ScorecardType.ScorecardTypeID",
+      "to": "ScorecardMetrics.ScorecardTypeID",
+      "ends": "||--o{"
+    },
+    {
+      "from": "ScorecardMetrics.ScorecardMetricID",
+      "to": "MetricInstances.ScorecardMetricID",
+      "ends": "||--o{"
+    }
+  ]
+}

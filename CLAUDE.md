@@ -17,3 +17,9 @@
 - Name branches and PRs after what they achieve, e.g. `feat/foreign-key-marking`,
   `fix/line-routing-overlaps` — never random or tool-generated names.
 - Conventional Commit messages (`feat:`, `fix:`, `docs:` …); PR titles follow the same style.
+
+## Skills
+
+- `.claude/skills/erd-image-to-json`: turn a picture of an ER diagram into an
+  importable ERD Studio `.json` file (spec → `build-diagram.mjs` →
+  `verify-diagram.mjs --browser`).
