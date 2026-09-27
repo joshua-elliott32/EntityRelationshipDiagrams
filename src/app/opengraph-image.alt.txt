@@ -1,0 +1,1 @@
+ERD Studio: an entity relationship diagram of customers, orders and products tables linked with crow's-foot lines, with normalisation issues highlighted in yellow.

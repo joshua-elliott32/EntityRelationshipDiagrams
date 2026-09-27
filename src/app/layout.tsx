@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Instrument_Sans, JetBrains_Mono } from "next/font/google";
 import type { ReactNode } from "react";
 import { PrivateSpeedInsights } from "@/components/PrivateSpeedInsights";
+import { SITE_DESCRIPTION, SITE_NAME, SITE_TAGLINE, SITE_URL } from "@/lib/site";
 import "./globals.css";
 
 // Self-hosted at build time by next/font: no requests to Google at runtime.
@@ -18,6 +19,23 @@ export const metadata: Metadata = {
   description:
     "Sketch database tables, mark primary and foreign keys, link them with crow's-foot relationships and check your design against 1NF–BCNF. Your diagrams stay in your browser.",
   applicationName: "ERD Studio",
+  // Makes the Open Graph image and canonical URLs absolute. The image itself
+  // comes from src/app/opengraph-image.png (Next adds the og:image tags).
+  metadataBase: new URL(SITE_URL),
+  alternates: { canonical: "/" },
+  openGraph: {
+    type: "website",
+    url: "/",
+    siteName: SITE_NAME,
+    title: `${SITE_NAME} — ${SITE_TAGLINE.toLowerCase()}`,
+    description: SITE_DESCRIPTION,
+    locale: "en_GB",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: `${SITE_NAME} — ${SITE_TAGLINE.toLowerCase()}`,
+    description: SITE_DESCRIPTION,
+  },
 };
 
 export const viewport: Viewport = {
