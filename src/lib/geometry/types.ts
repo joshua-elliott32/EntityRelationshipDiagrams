@@ -1,3 +1,4 @@
+import type { Relationship } from "@/lib/model/types";
 import type { LineStyle, Notation } from "@/lib/settings/types";
 
 export interface Point {
@@ -68,6 +69,11 @@ export interface Route {
 
 export interface RouteOptions {
   style: LineStyle;
+  /**
+   * Size of a relationship's label pill, used to keep labels apart. Defaults
+   * to an estimate of `"<type>  <label>"` in the label font.
+   */
+  labelSize?: (r: Relationship) => { w: number; h: number };
 }
 
 /** Marker drawn at one end of a line. */

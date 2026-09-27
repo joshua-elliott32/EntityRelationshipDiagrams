@@ -1,0 +1,97 @@
+.dialog {
+  width: min(560px, calc(100vw - 32px));
+  max-height: min(88vh, 820px);
+  padding: 0;
+  border: 1px solid var(--rule);
+  border-radius: var(--radius-lg);
+  background: var(--card);
+  color: var(--ink);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+
+.dialog[open] {
+  display: flex;
+  flex-direction: column;
+  animation: dlg-in 0.14s ease-out;
+}
+
+.dialog::backdrop {
+  background: var(--backdrop);
+}
+
+.wide {
+  width: min(760px, calc(100vw - 32px));
+}
+
+.narrow {
+  width: min(420px, calc(100vw - 32px));
+}
+
+@keyframes dlg-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px) scale(0.99);
+  }
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  max-height: inherit;
+  flex: 1;
+}
+
+.head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 16px 16px 8px 24px;
+}
+
+.title {
+  margin: 4px 0 0;
+  font-size: 17px;
+  font-weight: 600;
+}
+
+.desc {
+  margin: 4px 0 0;
+  font-size: 13px;
+  color: var(--ink-soft);
+  max-width: 60ch;
+}
+
+.body {
+  padding: 8px 24px 16px;
+  overflow: auto;
+  min-height: 0;
+  flex: 1;
+}
+
+.foot {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 12px 24px 16px;
+  border-top: 1px solid var(--rule);
+  background: var(--panel);
+}
+
+@media (max-width: 520px) {
+  .head {
+    padding-left: 16px;
+  }
+
+  .body {
+    padding: 8px 16px 16px;
+  }
+
+  .foot {
+    padding: 12px 16px;
+  }
+}

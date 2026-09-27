@@ -11,3 +11,9 @@
   free of React and DOM access (inject measurers etc.).
 - Colours come from CSS variables in `src/app/globals.css`; check both themes.
 - Run `npm run check` before committing; `npm run build && npm run test:e2e` for UI changes.
+
+## Git conventions
+
+- Name branches and PRs after what they achieve, e.g. `feat/foreign-key-marking`,
+  `fix/line-routing-overlaps` — never random or tool-generated names.
+- Conventional Commit messages (`feat:`, `fix:`, `docs:` …); PR titles follow the same style.
