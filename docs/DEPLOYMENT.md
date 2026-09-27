@@ -6,8 +6,10 @@ Vercel with no server functions and no environment variables.
 ## One-time setup
 
 1. Push `main` to GitHub, then in Vercel choose **Add New → Project** and import
-   the repository. The framework preset is detected as Next.js; `vercel.json`
-   pins the build command and output directory.
+   the repository. Keep the **Next.js** framework preset and leave _Build
+   Command_ and _Output Directory_ on their defaults — Vercel's Next.js builder
+   reads `.next/` and serves the static export itself. Overriding the output
+   directory to `out` fails with "routes-manifest.json couldn't be found".
 2. **Settings → Git**: production branch `main`; leave preview deployments on
    for pull requests.
 3. **Settings → General → Node.js version**: 22.x (matches `.nvmrc`).
