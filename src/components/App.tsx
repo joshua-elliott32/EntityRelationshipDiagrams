@@ -10,7 +10,12 @@ import {
 } from "react";
 import { DiagramCanvas } from "./canvas/DiagramCanvas";
 import { useDiagramStore } from "@/store/diagram";
-import { loadInitialDiagram, startAutosave, type InitialSource } from "@/store/persistence";
+import {
+  loadInitialDiagram,
+  openShareHash,
+  startAutosave,
+  type InitialSource,
+} from "@/store/persistence";
 import { useKeyboardShortcuts } from "@/hooks/useKeyboardShortcuts";
 import { toast } from "@/hooks/useToast";
 import { Dialogs } from "./dialogs/Dialogs";
@@ -23,12 +28,34 @@ import styles from "./App.module.css";
 // App is only ever rendered in the browser (see AppLoader), so the saved
 // diagram can be loaded before the first render instead of in an effect.
 let booted: InitialSource | null = null;
+let hadPrevious = false;
 function boot(): InitialSource {
   if (booted) return booted;
-  const { diagram, source } = loadInitialDiagram();
-  useDiagramStore.getState().load(diagram);
+  const { diagram, source, previous } = loadInitialDiagram();
+  const store = useDiagramStore.getState();
+  if (previous) {
+    // Keep the user's own diagram one undo step away from the shared one.
+    store.load(previous);
+    store.load(diagram, { keepHistory: true });
+  } else {
+    store.load(diagram);
+  }
   booted = source;
+  hadPrevious = !!previous;
   return source;
+}
+
+function announceSharedDiagram(keptPrevious: boolean) {
+  const name = useDiagramStore.getState().diagram.name;
+  if (keptPrevious) {
+    toast(`Opened “${name}” from a shared link. Your previous diagram is one Undo away.`, {
+      label: "Undo",
+      run: () => useDiagramStore.getState().undo(),
+    });
+  } else {
+    toast(`Opened “${name}” from a shared link. It’s saved in this browser now.`);
+  }
+  history.replaceState(null, "", location.pathname + location.search);
 }
 
 const PANEL_KEY = "erd-studio:panel-width";
@@ -58,10 +85,18 @@ export function App() {
   useEffect(() => {
     if (source !== "share-link" || announced.current) return;
     announced.current = true;
-    const name = useDiagramStore.getState().diagram.name;
-    toast(`Opened “${name}” from a shared link. It’s saved in this browser now.`);
-    history.replaceState(null, "", location.pathname + location.search);
+    announceSharedDiagram(hadPrevious);
   }, [source]);
+
+  // A share link pasted into the address bar of an already-open tab only
+  // changes the hash, so the page doesn't reload: load it here instead.
+  useEffect(() => {
+    const onHashChange = () => {
+      if (openShareHash(location.hash)) announceSharedDiagram(true);
+    };
+    window.addEventListener("hashchange", onHashChange);
+    return () => window.removeEventListener("hashchange", onHashChange);
+  }, []);
 
   const [panelWidth, setPanelWidth] = useState(readPanelWidth);
   useEffect(() => {
