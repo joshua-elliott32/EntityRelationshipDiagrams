@@ -1,0 +1,31 @@
+name: Bug report
+description: Something doesn't work as expected
+labels: [bug]
+body:
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened?
+      description: Include what you expected to happen instead.
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      placeholder: |
+        1. Add a table…
+        2. Link it to…
+    validations:
+      required: true
+  - type: textarea
+    id: diagram
+    attributes:
+      label: Diagram file (optional)
+      description: Export → Diagram file (.json) and paste it here if it helps reproduce the bug.
+      render: json
+  - type: input
+    id: browser
+    attributes:
+      label: Browser and OS
+      placeholder: Chrome 140 on macOS 15
