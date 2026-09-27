@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { stripUrl } from "./PrivateSpeedInsights";
+import { stripUrl, withoutQueryOrFragment } from "./telemetry";
 
 describe("stripUrl", () => {
   it("drops the share-link fragment and query string", () => {
@@ -9,5 +9,14 @@ describe("stripUrl", () => {
 
   it("leaves plain URLs unchanged", () => {
     expect(stripUrl("https://erd.example/")).toBe("https://erd.example/");
+  });
+});
+
+describe("withoutQueryOrFragment", () => {
+  it("keeps the event and strips its url", () => {
+    expect(withoutQueryOrFragment({ type: "pageview", url: "https://erd.example/#d=x" })).toEqual({
+      type: "pageview",
+      url: "https://erd.example/",
+    });
   });
 });
