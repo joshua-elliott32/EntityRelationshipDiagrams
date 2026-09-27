@@ -1,0 +1,133 @@
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  min-height: 32px;
+  padding: 0 12px;
+  border: 1px solid var(--rule);
+  border-radius: var(--radius);
+  background: var(--card);
+  color: var(--ink);
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1;
+  white-space: nowrap;
+  cursor: pointer;
+  transition:
+    border-color 0.12s,
+    background-color 0.12s,
+    color 0.12s,
+    box-shadow 0.12s;
+}
+
+.btn:hover:not(:disabled):not([aria-disabled="true"]) {
+  border-color: var(--ink-soft);
+}
+
+.btn:active:not(:disabled):not([aria-disabled="true"]) {
+  background: var(--panel);
+}
+
+.btn:disabled,
+.btn[aria-disabled="true"] {
+  opacity: 0.45;
+  cursor: default;
+}
+
+.btn svg {
+  flex: none;
+}
+
+.primary {
+  background: var(--ink);
+  border-color: var(--ink);
+  color: var(--card);
+}
+
+.primary:hover:not(:disabled):not([aria-disabled="true"]) {
+  border-color: var(--ink);
+  background: color-mix(in srgb, var(--ink) 88%, var(--card));
+}
+
+.primary:active:not(:disabled):not([aria-disabled="true"]) {
+  background: var(--ink);
+}
+
+.accent {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--accent-ink);
+}
+
+.accent:hover:not(:disabled):not([aria-disabled="true"]) {
+  border-color: var(--accent);
+  background: color-mix(in srgb, var(--accent) 88%, var(--ink));
+}
+
+.danger {
+  color: var(--danger);
+}
+
+.danger:hover:not(:disabled):not([aria-disabled="true"]) {
+  border-color: var(--danger);
+}
+
+.armed {
+  background: var(--danger);
+  border-color: var(--danger);
+  color: var(--card);
+}
+
+.armed:hover:not(:disabled) {
+  border-color: var(--danger);
+}
+
+.ghost {
+  background: transparent;
+  border-color: transparent;
+  color: var(--ink-soft);
+}
+
+.ghost:hover:not(:disabled):not([aria-disabled="true"]) {
+  border-color: var(--rule);
+  color: var(--ink);
+  background: var(--card);
+}
+
+.small {
+  min-height: 28px;
+  padding: 0 8px;
+  font-size: 12px;
+}
+
+.iconOnly {
+  padding: 0;
+  width: 32px;
+}
+
+.small.iconOnly {
+  width: 28px;
+}
+
+.btn[aria-pressed="true"] {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--accent-ink);
+}
+
+/* Visible label that collapses to icon-only on narrow screens. */
+.label {
+  display: inline;
+}
+
+@media (max-width: 1100px) {
+  .collapse .label {
+    display: none;
+  }
+
+  .collapse {
+    padding: 0;
+    width: 32px;
+  }
+}

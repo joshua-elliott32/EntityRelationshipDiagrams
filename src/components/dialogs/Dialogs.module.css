@@ -1,0 +1,235 @@
+.section + .section {
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid var(--rule);
+}
+
+.section h3 {
+  margin: 0 0 12px;
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--ink-soft);
+}
+
+.checks {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-bottom: 12px;
+}
+
+.inlineRow {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px 24px;
+  margin-bottom: 8px;
+}
+
+.compactField {
+  margin: 0;
+}
+
+.compactField select {
+  width: auto;
+}
+
+.footLeft {
+  margin-right: auto;
+}
+
+/* ---------- import / export ---------- */
+
+.tabs {
+  display: flex;
+  gap: 4px;
+  margin: 0 0 16px;
+  border-bottom: 1px solid var(--rule);
+}
+
+.tab {
+  min-height: 36px;
+  margin-bottom: -1px;
+  padding: 0 8px;
+  border: 0;
+  border-bottom: 2px solid transparent;
+  background: none;
+  color: var(--ink-soft);
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.tab:hover {
+  color: var(--ink);
+}
+
+.tab[aria-selected="true"] {
+  color: var(--ink);
+  border-bottom-color: var(--ink);
+}
+
+.help {
+  margin: 0 0 12px;
+  font-size: 13px;
+  color: var(--ink-soft);
+}
+
+.file {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px 12px;
+  margin-bottom: 12px;
+  font-size: 13px;
+}
+
+.fileName {
+  color: var(--ink-soft);
+  font-family: var(--mono);
+  font-size: 12px;
+  overflow-wrap: anywhere;
+}
+
+.code {
+  width: 100%;
+  min-height: 220px;
+  max-height: 50vh;
+  padding: 8px 12px;
+  border: 1px solid var(--rule);
+  border-radius: var(--radius);
+  background: var(--panel);
+  color: var(--ink);
+  font-family: var(--mono);
+  font-size: 12px;
+  line-height: 1.5;
+  resize: vertical;
+  white-space: pre;
+  overflow: auto;
+  tab-size: 2;
+}
+
+.code:focus {
+  border-color: var(--accent);
+  outline: none;
+  box-shadow: 0 0 0 3px var(--accent-soft);
+}
+
+.error {
+  margin: 8px 0 0;
+  color: var(--danger);
+  font-size: 12.5px;
+}
+
+.warnings {
+  margin: 12px 0 0;
+  padding: 8px 12px 8px 28px;
+  border-left: 4px solid var(--hl);
+  border-radius: 4px;
+  background: color-mix(in srgb, var(--hl) 16%, var(--card));
+  font-size: 12.5px;
+  max-height: 160px;
+  overflow: auto;
+}
+
+.warningsTitle {
+  margin: 12px 0 0;
+  font-size: 12.5px;
+  font-weight: 600;
+}
+
+.okLine {
+  margin: 12px 0 0;
+  font-size: 12.5px;
+  color: var(--success);
+}
+
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 16px;
+  align-items: flex-end;
+  margin-bottom: 12px;
+}
+
+.controls > label {
+  margin: 0;
+  min-width: 160px;
+}
+
+.urlRow {
+  display: flex;
+  gap: 8px;
+  margin: 12px 0;
+}
+
+.urlRow input {
+  flex: 1;
+  min-width: 0;
+  font-family: var(--mono);
+  font-size: 12px;
+}
+
+.meta {
+  font-size: 12px;
+  color: var(--ink-soft);
+}
+
+.long {
+  margin: 12px 0 0;
+  padding: 8px 12px;
+  border-left: 4px solid var(--hl);
+  border-radius: 4px;
+  background: color-mix(in srgb, var(--hl) 16%, var(--card));
+  font-size: 12.5px;
+}
+
+/* ---------- shortcuts ---------- */
+
+.shortcutGroup + .shortcutGroup {
+  margin-top: 16px;
+}
+
+.shortcutGroup h3 {
+  margin: 0 0 8px;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--ink-soft);
+}
+
+.shortcutList {
+  display: grid;
+  grid-template-columns: minmax(120px, auto) 1fr;
+  gap: 8px 16px;
+  margin: 0;
+  font-size: 13px;
+}
+
+.shortcutList dt {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  align-items: center;
+}
+
+.shortcutList dd {
+  margin: 0;
+}
+
+.kbd {
+  display: inline-block;
+  min-width: 24px;
+  padding: 1px 6px;
+  border: 1px solid var(--rule);
+  border-bottom-width: 2px;
+  border-radius: 4px;
+  background: var(--panel);
+  font-family: var(--mono);
+  font-size: 11.5px;
+  text-align: center;
+  white-space: nowrap;
+}
