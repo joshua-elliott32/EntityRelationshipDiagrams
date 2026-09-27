@@ -140,3 +140,14 @@ test("opening a share link keeps your own diagram one Undo away", async ({ page,
   await expect(p2.getByRole("textbox", { name: "Diagram name" })).toHaveValue("My own work");
   await other.close();
 });
+
+test("the About dialog links to the source on GitHub", async ({ page }) => {
+  await page.getByRole("button", { name: "More actions" }).click();
+  await page.getByRole("menuitem", { name: /About & privacy/ }).click();
+  const link = page.getByRole("link", { name: "GitHub" });
+  await expect(link).toHaveAttribute(
+    "href",
+    "https://github.com/joshua-elliott32/EntityRelationshipDiagrams",
+  );
+  await expect(link).toHaveAttribute("rel", "noopener noreferrer");
+});

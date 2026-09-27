@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { SOURCE_URL } from "@/lib/site";
 import { useUiStore } from "@/store/ui";
 import { loadExample, newDiagram } from "../actions";
 import { FileIcon, KeyboardIcon, LockIcon, MoreIcon, SparkIcon } from "../icons";
@@ -77,6 +78,19 @@ export function MoreMenu() {
             the site you came from, your browser, operating system and device type, your approximate
             country, and page-load timings. They use no cookies, keep no IP addresses and never
             include your diagrams or share links.
+          </p>
+          <p>
+            <strong>Open source.</strong> ERD Studio is free and MIT licensed. Read the code, report
+            a bug or suggest a feature on{" "}
+            <a
+              href={SOURCE_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{ color: "var(--accent)", fontWeight: 600 }}
+            >
+              GitHub
+            </a>
+            .
           </p>
           <p style={{ marginBottom: 0, color: "var(--ink-soft)", fontSize: 13 }}>
             Clearing your browser data removes the saved diagram, so export a diagram file (.json)
