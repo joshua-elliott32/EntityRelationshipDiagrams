@@ -2,8 +2,10 @@
 
 Sketch database tables, mark primary and foreign keys, connect them with
 crow's-foot relationships and check the design against 1NF → BCNF — entirely
-in your browser. Nothing is uploaded: diagrams live in `localStorage`, in files
-you export, or inside share links.
+in your browser. Your diagrams are never uploaded: they live in `localStorage`,
+in files you export, or inside share links. The hosted site uses Vercel Speed
+Insights for anonymous, cookie-free page-speed measurements (no diagram data or
+share-link contents are sent — see `src/components/PrivateSpeedInsights.tsx`).
 
 Grown from the single-file prototype kept in [`docs/original-demo.html`](docs/original-demo.html).
 

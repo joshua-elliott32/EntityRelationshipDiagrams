@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Instrument_Sans, JetBrains_Mono } from "next/font/google";
 import type { ReactNode } from "react";
+import { PrivateSpeedInsights } from "@/components/PrivateSpeedInsights";
 import { SITE_DESCRIPTION, SITE_NAME, SITE_TAGLINE, SITE_URL } from "@/lib/site";
 import "./globals.css";
 
@@ -16,7 +17,7 @@ const mono = JetBrains_Mono({
 export const metadata: Metadata = {
   title: "ERD Studio — entity relationship diagrams in your browser",
   description:
-    "Sketch database tables, mark primary and foreign keys, link them with crow's-foot relationships and check your design against 1NF–BCNF. Everything stays in your browser.",
+    "Sketch database tables, mark primary and foreign keys, link them with crow's-foot relationships and check your design against 1NF–BCNF. Your diagrams stay in your browser.",
   applicationName: "ERD Studio",
   // Makes the Open Graph image and canonical URLs absolute. The image itself
   // comes from src/app/opengraph-image.png (Next adds the og:image tags).
@@ -59,7 +60,10 @@ export default function RootLayout({ children }: { children: ReactNode }) {
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
       </head>
-      <body>{children}</body>
+      <body>
+        {children}
+        <PrivateSpeedInsights />
+      </body>
     </html>
   );
 }

@@ -70,6 +70,13 @@ export function MoreMenu() {
             browser’s local storage and all exports are made on your device. Share links carry the
             whole diagram inside the link itself — nothing is uploaded.
           </p>
+          <p>
+            <strong>Performance measurements.</strong> This site uses Vercel Speed Insights to
+            measure how quickly pages load and respond. It sends anonymous timings (Core Web
+            Vitals), the page address without anything after <code>?</code> or <code>#</code>, and
+            your browser and device type. It uses no cookies and never includes your diagrams or
+            share links.
+          </p>
           <p style={{ marginBottom: 0, color: "var(--ink-soft)", fontSize: 13 }}>
             Clearing your browser data removes the saved diagram, so export a diagram file (.json)
             to keep a copy.

@@ -34,9 +34,10 @@ Vercel with no server functions and no environment variables.
       deploy (browser console should show no CSP violations). Static export
       needs `'unsafe-inline'` for scripts because Next.js inlines its bootstrap
       data; there is no per-request nonce without a server.
-- [ ] Privacy note: the app stores diagrams only in the browser. If you add
-      analytics (Vercel Web Analytics is cookie-free), mention it and add its
-      domain to `connect-src`.
+- [x] Privacy note: diagrams are stored only in the browser. Vercel Speed
+      Insights is enabled (cookie-free, same-origin, URL fragment and query
+      stripped before sending) and described in the About & privacy dialog.
+      Update that dialog if you add other analytics.
 - [ ] Error reporting (optional): a client-side error boundary is in place;
       hook it to a service only if you're happy to send error data off-device.
 - [ ] Test on Safari (iOS and macOS) and Firefox — pointer, pinch-zoom and
