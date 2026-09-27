@@ -2,7 +2,9 @@
 
 ## Workflow
 
-1. Branch from `main`: `feat/<short-name>`, `fix/<short-name>` or `chore/<short-name>`.
+1. Branch from `main` and name the branch after what it achieves:
+   `feat/foreign-key-marking`, `fix/line-routing-overlaps`, `docs/deployment-guide`.
+   PR titles describe the outcome the same way (`feat: mark columns as foreign keys`).
 2. Keep commits focused and use [Conventional Commits](https://www.conventionalcommits.org/)
    (`feat:`, `fix:`, `docs:`, `refactor:`, `test:`, `chore:`).
 3. Run `npm run check` before pushing. For UI changes also run
