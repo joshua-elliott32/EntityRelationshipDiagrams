@@ -1,7 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Instrument_Sans, JetBrains_Mono } from "next/font/google";
 import type { ReactNode } from "react";
-import { SpeedInsights } from "@vercel/speed-insights/next";
+import { PrivateSpeedInsights } from "@/components/PrivateSpeedInsights";
 import "./globals.css";
 
 // Self-hosted at build time by next/font: no requests to Google at runtime.
@@ -16,7 +16,7 @@ const mono = JetBrains_Mono({
 export const metadata: Metadata = {
   title: "ERD Studio — entity relationship diagrams in your browser",
   description:
-    "Sketch database tables, mark primary and foreign keys, link them with crow's-foot relationships and check your design against 1NF–BCNF. Everything stays in your browser.",
+    "Sketch database tables, mark primary and foreign keys, link them with crow's-foot relationships and check your design against 1NF–BCNF. Your diagrams stay in your browser.",
   applicationName: "ERD Studio",
 };
 
@@ -44,7 +44,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
       </head>
       <body>
         {children}
-        <SpeedInsights />
+        <PrivateSpeedInsights />
       </body>
     </html>
   );
