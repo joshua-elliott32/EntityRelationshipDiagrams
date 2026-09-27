@@ -51,5 +51,6 @@
   "description": "Design entity relationship diagrams, mark keys and check normalisation — entirely in the browser.",
   "engines": {
     "node": ">=20.9"
-  }
+  },
+  "license": "MIT"
 }

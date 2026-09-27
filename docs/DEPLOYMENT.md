@@ -25,7 +25,7 @@ Vercel with no server functions and no environment variables.
 
 ## Pre-launch checklist
 
-- [ ] Choose a licence and add `LICENSE` (MIT is common for tools like this).
+- [x] Licence: MIT (`LICENSE`).
 - [x] Production URL (`src/lib/site.ts`), app icon (`src/app/icon.svg`) and
       Open Graph image (`src/app/opengraph-image.png`, 1200×630). Regenerate the
       image if the look of the app changes.

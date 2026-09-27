@@ -76,3 +76,7 @@ pre-launch checklist.
 ## Contributing
 
 See [CONTRIBUTING.md](CONTRIBUTING.md).
+
+## Licence
+
+[MIT](LICENSE) © 2026 Joshua Elliott
