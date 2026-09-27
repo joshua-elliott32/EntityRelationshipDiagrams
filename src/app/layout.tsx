@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Instrument_Sans, JetBrains_Mono } from "next/font/google";
 import type { ReactNode } from "react";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import "./globals.css";
 
 // Self-hosted at build time by next/font: no requests to Google at runtime.
@@ -41,7 +42,10 @@ export default function RootLayout({ children }: { children: ReactNode }) {
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
       </head>
-      <body>{children}</body>
+      <body>
+        {children}
+        <SpeedInsights />
+      </body>
     </html>
   );
 }
