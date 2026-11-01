@@ -28,7 +28,7 @@
     "write-excel-file": "^4.1.1",
     "zod": "^4.6.5",
     "zundo": "^2.3.0",
-    "zustand": "^5.0.15"
+    "zustand": "^5.0.16"
   },
   "devDependencies": {
     "@playwright/test": "^1.63.0",
